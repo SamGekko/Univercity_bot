@@ -1,9 +1,15 @@
+from os.path import join, dirname
 import toml
 import logging
 import os
+from dotenv import load_dotenv
 
-EXAMPLE_CONFIG = """\"token\"=\"\" # the bot's token
-\"prefix\"=\"!\" # prefix used to denote commands
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
+TOKEN = str(os.getenv("TOKEN"))
+
+EXAMPLE_CONFIG = f"""\"token\"=\"{TOKEN}\" # the bot's token
+\"prefix\"=\"-\" # prefix used to denote commands
 [music]
 # Options for the music commands
 "max_volume"=250 # Max audio volume. Set to -1 for unlimited.
